@@ -77,12 +77,10 @@ export default GlobalStyleProvider
 ```js
 const themes = [
     {
-      name: "default",
-      ...
+      name: "default", ...
     },
     {
-      name: "dark",
-      ...
+      name: "dark", ...
     },
 ```
 
@@ -140,3 +138,9 @@ const SidebarStyled = styled.nav`
 `
 ```
 
+#### Note:
+1. `app/context/themes.js`: Defines an array of theme objects for application styling.
+2. `app/context/globalProvider.js`: Sets up React Contexts for managing and providing global theme state and update functions.
+3. `app/providers/ContextProvider.tsx`: Wraps the `GlobalProvider` around child components to provide global state context.
+4. `app/layout.tsx`: Uses `ContextProvider` to apply global themes to the application layout.
+5. `app/component/Sidebar.tsx`: Accesses the current theme from the global context and renders the sidebar with applied styles.
