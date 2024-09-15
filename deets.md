@@ -144,3 +144,21 @@ const SidebarStyled = styled.nav`
 3. `app/providers/ContextProvider.tsx`: Wraps the `GlobalProvider` around child components to provide global state context.
 4. `app/layout.tsx`: Uses `ContextProvider` to apply global themes to the application layout.
 5. `app/component/Sidebar.tsx`: Accesses the current theme from the global context and renders the sidebar with applied styles.
+
+#### Fixing Styles issue
+__app/providers/ContextProvider.tsx__
+
+```jsx
+function ContextProvider({ children }: Props) {
+  const [isReady, setIsReady] = React.useState(false);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setIsReady(true);
+    }, 200)
+  }, [])
+  if(!isReady) return null;
+  return (
+    <GlobalProvider>{ children }</GlobalProvider>
+  )
+}
+```
